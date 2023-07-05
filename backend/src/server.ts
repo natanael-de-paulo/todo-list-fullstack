@@ -1,5 +1,8 @@
-import { server } from "./app"
+import { server } from './app'
 
-const port = process.env.SERVER_PORT || 3001
+const hostname = process.env.SERVER_HOST || 'localhost'
+const port = Number(process.env.SERVER_PORT) || 3001
 
-server.listen(port, () => console.log(`server is listening on ${port}`))
+server.listen(port, hostname, () => {
+  console.log(`server is listening on ${hostname}:${port}`)
+})
