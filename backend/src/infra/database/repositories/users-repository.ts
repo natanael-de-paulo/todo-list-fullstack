@@ -16,6 +16,7 @@ class UsersRepository implements IUsersRepository {
         userId: true,
         name: true,
         email: true,
+        tasks: true,
         createdAt: true,
         updatedAt: true
       }
