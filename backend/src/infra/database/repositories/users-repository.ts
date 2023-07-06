@@ -2,10 +2,28 @@ import { createUserResponseDTO } from "../../../app/user/dtos/create-user-dto-re
 import { IUsersRepository } from "../../../app/user/repository/users-repository";
 import prisma from "../../../libs/prisma"
 import { createUserRequestDTO } from "../../../app/user/dtos/create-user-dto-request";
-import { updateUserResquestDTO } from "../../../app/user/dtos/update-user-dto-request";
 import { dataUserToUpdateDTO } from "../../../app/user/dtos/data-user-dto-to-update";
+import { UserResponseDTO } from "../../../app/user/dtos/user-dto-response";
 
 class UsersRepository implements IUsersRepository {
+
+  async get(userId: string): Promise<UserResponseDTO> {
+    const query = await prisma.users.findUnique({
+      where: {
+        userId: userId
+      },
+      select: {
+        userId: true,
+        name: true,
+        email: true,
+        createdAt: true,
+        updatedAt: true
+      }
+    })
+
+    return query as UserResponseDTO 
+  }
+
   async create(input: createUserRequestDTO): Promise<createUserResponseDTO> {
     const output = await prisma.users.create({
       data: {
