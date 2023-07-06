@@ -6,7 +6,7 @@
   "author": "Natanael de Paulo <natanaeldepaulo123@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.ts",
+    "dev": "nodemon ./src/server.ts",
     "prisma::reset": "yarn prisma migrate reset"
   },
   "devDependencies": {

@@ -2,6 +2,8 @@ import { createUserResponseDTO } from "../../../app/user/dtos/create-user-dto-re
 import { IUsersRepository } from "../../../app/user/repository/users-repository";
 import prisma from "../../../libs/prisma"
 import { createUserRequestDTO } from "../../../app/user/dtos/create-user-dto-request";
+import { updateUserResquestDTO } from "../../../app/user/dtos/update-user-dto-request";
+import { dataUserToUpdateDTO } from "../../../app/user/dtos/data-user-dto-to-update";
 
 class UsersRepository implements IUsersRepository {
   async create(input: createUserRequestDTO): Promise<createUserResponseDTO> {
@@ -21,13 +23,24 @@ class UsersRepository implements IUsersRepository {
     return output
   }
 
-
   async delete(userId: string): Promise<void> {
     await prisma.users.delete({
       where: {
         userId: userId
       }
     })
+  }
+
+  async update(input: dataUserToUpdateDTO): Promise<void> {
+    await prisma.users.update({
+      data: {
+        ...input.dataUserToUpdate
+      },
+      where: {
+        userId: input.userId
+      }
+    })
+
   }
 }
 
