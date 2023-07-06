@@ -10,11 +10,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
+model User {
   userId    String   @id @default(uuid()) @map("user_id")
   name      String
   email     String   @unique @db.VarChar(255)
   password  String   @db.VarChar(255)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(6)
-  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamp(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
+  Tasks     Task[]
+}
+
+model Task {
+  taskId    String   @id @default(uuid()) @map("task_id")
+  name      String
+  status    Status   @default(PENDING)
+  userId    String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
+  user      User     @relation(fields: [userId], references: [userId])
+}
+
+enum Status {
+  PENDING
+  IN_PROGRESS
+  DONE
 }
