@@ -1,6 +1,6 @@
+import CreateUserController from "../create-user-controller"
 import CreateUserServiceFactory from "../../services/factories/create-user-service-factory"
 import { httpControllerAdapter } from "../../../../infra/http/controller/controller-adapter"
-import CreateUserController from "../create-user-controller"
 
 class CreateUserControllerFactory {
   static createUser() {
@@ -9,4 +9,4 @@ class CreateUserControllerFactory {
   }
 }
 
-export default CreateUserControllerFactory;
+export default CreateUserControllerFactory.createUser();

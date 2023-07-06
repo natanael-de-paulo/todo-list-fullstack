@@ -20,6 +20,15 @@ class UsersRepository implements IUsersRepository {
 
     return output
   }
+
+
+  async delete(userId: string): Promise<void> {
+    await prisma.users.delete({
+      where: {
+        userId: userId
+      }
+    })
+  }
 }
 
 

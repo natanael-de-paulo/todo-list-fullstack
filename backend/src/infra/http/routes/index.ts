@@ -1,6 +1,5 @@
-import CreateUserControllerFactory  from '../../../app/user/controllers/factories/create-user-controller-factory';
 import { Router } from '../config';
+import { userRouter } from './user-route';
 
 export const routes = Router()
-
-routes.post('/users', CreateUserControllerFactory.createUser())
+routes.use('/', [userRouter])
