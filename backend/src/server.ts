@@ -1,4 +1,4 @@
-import { app } from './app'
+import app from './app'
 
 const hostname = process.env.SERVER_HOST || 'localhost'
 const port = Number(process.env.SERVER_PORT) || 3001
