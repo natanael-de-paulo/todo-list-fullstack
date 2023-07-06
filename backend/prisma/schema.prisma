@@ -17,17 +17,19 @@ model User {
   password  String   @db.VarChar(255)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(6)
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
-  Tasks     Task[]
+  tasks     Task[]
 }
 
 model Task {
-  taskId    String   @id @default(uuid()) @map("task_id")
-  name      String
-  status    Status   @default(PENDING)
-  userId    String
+  taskId String @id @default(uuid()) @map("task_id")
+  name   String
+  status Status @default(PENDING)
+  
+  user      User     @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
+  userId    String   @map("user_id")
+
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(6)
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
-  user      User     @relation(fields: [userId], references: [userId])
 }
 
 enum Status {
