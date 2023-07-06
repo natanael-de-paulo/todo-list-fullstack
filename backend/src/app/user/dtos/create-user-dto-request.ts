@@ -1,3 +1,3 @@
 import { UserModel } from "../model/user-model";
 
-export type createUserRequestDTO = Omit<UserModel, 'userId' | 'createdAt' | 'updatedAt'>
+export type createUserRequestDTO = Pick<UserModel, 'name' | 'email' | 'password'>

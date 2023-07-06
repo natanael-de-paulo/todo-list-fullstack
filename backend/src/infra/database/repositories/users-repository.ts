@@ -32,10 +32,6 @@ class UsersRepository implements IUsersRepository {
       } as createUserRequestDTO,
       select: {
         userId: true,
-        name: true,
-        email: true,
-        createdAt: true,
-        updatedAt: true
       }
     })
 

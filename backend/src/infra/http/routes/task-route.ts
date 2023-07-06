@@ -4,5 +4,5 @@ import { Router } from '../config';
 export const taskRouter = Router()
 
 taskRouter
-  .route('/tasks/:userId')
+  .route('/:userId/tasks')
   .post(CreateTaskControllerFactory)

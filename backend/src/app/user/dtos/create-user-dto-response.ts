@@ -1,3 +1,3 @@
 import { UserModel } from "../model/user-model";
 
-export type createUserResponseDTO = Omit<UserModel, "password">
+export type createUserResponseDTO = Pick<UserModel, "userId">

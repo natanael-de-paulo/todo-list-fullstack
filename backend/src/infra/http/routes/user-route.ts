@@ -8,14 +8,14 @@ import { Router } from '../config';
 export const userRouter = Router()
 
 userRouter
-  .route('/users')
+  .route('/')
   .get(() => {
     console.log('test');
   })
   .post(CreateUserControllerFactory)
  
 userRouter
-  .route('/users/:userId')
+  .route('/:userId')
   .get(GetUserControllerFactory)
   .put(UpdateUserControllerFactory)
   .delete(DeleteUserControllerFactory)
