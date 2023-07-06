@@ -8,7 +8,7 @@ import { UserResponseDTO } from "../../../app/user/dtos/user-dto-response";
 class UsersRepository implements IUsersRepository {
 
   async get(userId: string): Promise<UserResponseDTO> {
-    const query = await prisma.users.findUnique({
+    const query = await prisma.user.findUnique({
       where: {
         userId: userId
       },
@@ -25,7 +25,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   async create(input: createUserRequestDTO): Promise<createUserResponseDTO> {
-    const output = await prisma.users.create({
+    const output = await prisma.user.create({
       data: {
         ...input
       } as createUserRequestDTO,
@@ -42,7 +42,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   async delete(userId: string): Promise<void> {
-    await prisma.users.delete({
+    await prisma.user.delete({
       where: {
         userId: userId
       }
@@ -50,7 +50,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   async update(input: dataUserToUpdateDTO): Promise<void> {
-    await prisma.users.update({
+    await prisma.user.update({
       data: {
         ...input.dataUserToUpdate
       },
