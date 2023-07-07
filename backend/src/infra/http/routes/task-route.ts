@@ -1,5 +1,6 @@
 import CreateTaskControllerFactory from '../../../app/task/controllers/factories/create-task-controller-factory';
 import GetTaskControllerFactory from '../../../app/task/controllers/factories/get-task-controller-factory';
+import UpdateTaskControllerFactory from '../../../app/task/controllers/factories/update-task-controller-factory';
 import { Router } from '../config';
 
 export const taskRouter = Router()
@@ -11,3 +12,4 @@ taskRouter
 taskRouter
   .route('/:userId/tasks/:taskId')
   .get(GetTaskControllerFactory)
+  .put(UpdateTaskControllerFactory)

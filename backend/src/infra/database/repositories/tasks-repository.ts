@@ -2,6 +2,7 @@ import prisma from "../../../libs/prisma"
 import { ITasksRepository } from "../../../app/task/repository/tasks-repository";
 import { TaskResponseDTO } from "../../../app/task/dtos/task-dto-response";
 import { CreateTaskRequestDTO } from "../../../app/task/dtos/create-task-dto-request";
+import { DataTaskToUpdateDTO } from "../../../app/task/dtos/data-task-to-update-dto";
 
 class TasksRepository implements ITasksRepository {
   async create(input: {taskData: CreateTaskRequestDTO, userId: string}): Promise<TaskResponseDTO> {
@@ -36,6 +37,21 @@ class TasksRepository implements ITasksRepository {
     })
 
     return query as TaskResponseDTO 
+  }
+
+  async update(input: DataTaskToUpdateDTO): Promise<void> {
+    await prisma.task.update({
+      data: {
+        name: input.name,
+        status: {
+          set: input.status
+        }
+      },
+      where: {
+        taskId: input.taskId      
+      }
+    })
+
   }
 }
 
