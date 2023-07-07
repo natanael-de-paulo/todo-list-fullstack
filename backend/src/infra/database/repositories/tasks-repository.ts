@@ -30,7 +30,6 @@ class TasksRepository implements ITasksRepository {
         name: true,
         status: true,
         userId: true,
-        user: true,
         createdAt: true,
         updatedAt: true
       },
