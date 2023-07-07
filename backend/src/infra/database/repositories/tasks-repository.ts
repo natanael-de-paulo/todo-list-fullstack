@@ -39,6 +39,25 @@ class TasksRepository implements ITasksRepository {
     return query as TaskResponseDTO 
   }
 
+  async getAll(userId: string): Promise<TaskResponseDTO[]> {
+    const query = await prisma.task.findMany({
+      where: {
+        userId
+      },
+      select: {
+        taskId: true,
+        name: true,
+        status: true,
+        userId: true,
+        createdAt: true,
+        updatedAt: true
+      }
+    })
+
+    return query as TaskResponseDTO[]
+  }
+
+
   async update(input: DataTaskToUpdateDTO): Promise<void> {
     await prisma.task.update({
       data: {
