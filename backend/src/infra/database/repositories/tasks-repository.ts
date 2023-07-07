@@ -18,6 +18,26 @@ class TasksRepository implements ITasksRepository {
 
     return output as TaskResponseDTO
   }
+
+  async get(input: {userId: string, taskId: string}): Promise<TaskResponseDTO> {
+    const query = await prisma.task.findFirst({
+      where: {
+        taskId: input.taskId,
+        userId: input.userId
+      },
+      select: {
+        taskId: true,
+        name: true,
+        status: true,
+        userId: true,
+        user: true,
+        createdAt: true,
+        updatedAt: true
+      },
+    })
+
+    return query as TaskResponseDTO 
+  }
 }
 
 export default TasksRepository
