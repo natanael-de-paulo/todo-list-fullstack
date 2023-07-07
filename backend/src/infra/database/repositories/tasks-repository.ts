@@ -51,7 +51,14 @@ class TasksRepository implements ITasksRepository {
         taskId: input.taskId      
       }
     })
+  }
 
+  async delete(input: { userId: string, taskId: string}): Promise<void> {
+    await prisma.task.delete({
+      where: {
+        taskId: input.taskId   
+      }
+    })
   }
 }
 
