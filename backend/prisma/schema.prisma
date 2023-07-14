@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["linux-musl-openssl-3.0.x", "debian-openssl-3.0.x", "debian-openssl-1.1.x"]
 }
 
 datasource db {
@@ -24,9 +25,9 @@ model Task {
   taskId String @id @default(uuid()) @map("task_id")
   name   String
   status Status @default(PENDING)
-  
-  user      User     @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
-  userId    String   @map("user_id")
+
+  user   User   @relation(fields: [userId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
+  userId String @map("user_id")
 
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(6)
   updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(6)
