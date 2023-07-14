@@ -1,9 +1,9 @@
 import { ITokenJwt } from "./interfaces/itoken-jwt"
 import jwt from 'jsonwebtoken'
 import { Request } from '../../infra/http/config'
+import { AuthException } from "../../infra/http/erros/auth-exception"
 
 interface PayLoad {	sub: string }
-
 
 class TokenJwt implements ITokenJwt {
 	token(userId: string): string {
@@ -13,11 +13,9 @@ class TokenJwt implements ITokenJwt {
 	}
 
 	decryptToken(req: Request): void | string {
-		const authToken = req.headers.authorization as string
-
-		// if(!authToken) return customError("Desculpa, mas você não está autenticado!")
-
-		const [ ,token ] = authToken.split(" ")
+		const authHeader = req.headers.authorization as string
+		if(!authHeader) throw new AuthException("Sorry, but you are not authenticated!")
+		const [ ,token ] = authHeader.split(" ")
 
 		try {
 			const { sub } = jwt.verify(
@@ -25,11 +23,9 @@ class TokenJwt implements ITokenJwt {
 				process.env.JWT_SECRET as string
 			) as PayLoad
 	
-			const userId = req.userId = sub
-
-			return userId
+			return sub
 		} catch (err) {
-			// return customError("Desculpa, mas você não está autenticado!")
+			throw new AuthException("Sorry, but you are not authenticated!")
 		}
 	}
 }

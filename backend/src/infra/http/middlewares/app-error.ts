@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction} from '../config'
+import { AuthException } from '../erros/auth-exception';
 import { BadRequestException } from '../erros/bad-request-exception';
 
 export async function AppError (
@@ -9,6 +10,12 @@ export async function AppError (
 ) {
   
 	if (err instanceof BadRequestException) {
+		return res.status(err.getStatus()).json({
+			message: err.message
+		});
+	}
+
+  if (err instanceof AuthException) {
 		return res.status(err.getStatus()).json({
 			message: err.message
 		});

@@ -1,3 +1,4 @@
+import IsAuthenticatedMiddlewareFactory from '../../../app/auth/middlewares/factories/is-authenticated-middleware-factory';
 import CreateUserControllerFactory from '../../../app/user/controllers/factories/create-user-controller-factory';
 import DeleteUserControllerFactory from '../../../app/user/controllers/factories/delete-user-controller-factory';
 import GetUserControllerFactory from '../../../app/user/controllers/factories/get-user-controller-factory';
@@ -9,13 +10,11 @@ export const userRouter = Router()
 
 userRouter
   .route('/')
-  .get(() => {
-    console.log('test');
-  })
   .post(CreateUserControllerFactory)
  
 userRouter
   .route('/:userId')
+  .all(IsAuthenticatedMiddlewareFactory)
   .get(GetUserControllerFactory)
   .put(UpdateUserControllerFactory)
   .delete(DeleteUserControllerFactory)
