@@ -1,6 +1,6 @@
 import Cors from 'cors'
 
-const allowedOrigins = true
+const allowedOrigins = "*"
 
 const options: Cors.CorsOptions = {
 	origin: allowedOrigins,
