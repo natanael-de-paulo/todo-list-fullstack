@@ -11,13 +11,13 @@ export async function AppError (
   
 	if (err instanceof BadRequestException) {
 		return res.status(err.getStatus()).json({
-			message: err.message
+			message: err.getMessage()
 		});
 	}
 
   if (err instanceof AuthException) {
 		return res.status(err.getStatus()).json({
-			message: err.message
+			message: err.getMessage()
 		});
 	}
 
