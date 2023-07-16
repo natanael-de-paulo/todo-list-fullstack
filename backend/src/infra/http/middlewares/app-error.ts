@@ -25,6 +25,4 @@ export async function AppError (
 		status: 'error',
 		message: `Internal Server Error - ${err.message}`
 	});
-  
-	return next();
 }
