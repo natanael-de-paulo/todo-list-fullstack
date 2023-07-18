@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list</title>
+    <link rel="stylesheet" type="text/css" href="./default.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./pages/login/styles/index.css"
+    />
+  </head>
+  <body>
+    <main>
+      <form method="post" action="" id="login-form">
+        <h2>Login</h2>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            placeholder="example@example.com"
+          />
+          <p class="form-validation" name="email"></p>
+        </div>
+        <div class="form-group">
+          <label for="password">Senha:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-input"
+            placeholder="*********"
+          />
+          <p class="form-validation" name="password"></p>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="form-submit-btn form-input">
+            Entrar
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script src="./pages/login/index.js"></script>
+    <script src="./scripts/clear-all-inputs.js"></script>
+    <script src="./scripts/validade-inputs.js"></script>
+    <script src="./services/api/api.js"></script>
+    <script src="./services/api/security.js"></script>
+  </body>
+</html>

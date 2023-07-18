@@ -1,0 +1,72 @@
+main {
+  max-width: 60em;
+  width: 100%;
+  display: flex;
+  padding: 2em;
+  background: white;
+}
+
+main .container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  align-items: center;
+}
+
+.wrapperInputs {
+  display: flex;
+  gap: 1.5em;
+}
+
+.wrapperInputs input:first-child {
+  padding-left: 0.2em ;
+}
+
+.container table {
+  display: table;
+  gap: 2em;
+}
+
+thead th {
+  color: #999;
+}
+
+thead th,
+tbody td {
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid ;
+}
+
+tbody td{
+  text-align: center;
+}
+
+tbody .task-container {
+  padding: 1em;
+}
+
+tbody td:last-child .wrapper-action-task{
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+tbody .wrapper-action-task .action-task {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  cursor: pointer;
+}
+
+tbody .wrapper-action-task .action-task img {
+  width: 1em;
+  height: 1em;
+}

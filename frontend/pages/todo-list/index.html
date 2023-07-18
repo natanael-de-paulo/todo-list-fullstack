@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list</title>
+    <link rel="stylesheet" type="text/css" href="../../default.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/index.css" />
+  </head>
+  <body>
+    <main>
+      <section class="container">
+        <form name="createTaskForm" method="post">
+          <h2>Lista de Tarefas</h2>
+          <div class="wrapperInputs">
+            <input type="text" id="name" placeholder="Adicionar nova tarefa" />
+            <input type="submit" value="Adicionar" />
+          </div>
+        </form>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Status</th>
+              <th aria-label="edit icon and delete icon" colspan="2">
+                Actions
+              </th>
+            </tr>
+          </thead>
+
+          <tbody id="taskList"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="./index.js"></script>
+    <script src="../../services/api/api.js"></script>
+    <script src="../../services/api/task.js"></script>
+  </body>
+</html>
