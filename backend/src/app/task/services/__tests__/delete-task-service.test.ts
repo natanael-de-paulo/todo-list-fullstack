@@ -16,7 +16,7 @@ describe("delete task service", () => {
       await DeleteTaskServiceFactory.execute({userId, taskId})
 
     } catch (error: any) {
-      expect(error.getMessage()).toThrowError("task or user not found")      
+      expect(error.message).toEqual("task or user not found")      
     }
   })
 })

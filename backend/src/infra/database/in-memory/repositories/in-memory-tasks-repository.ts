@@ -58,7 +58,7 @@ class InMemoryTasksRepository implements ITasksRepository {
 
   async delete(input: { userId: string, taskId: string }): Promise<void> {
     const index = this.findIndex((task: TaskModel) => task.taskId === input.taskId && task.userId === input.userId)
-    if(!index) throw new Error("task or user not found")
+    if(index == -1) throw new Error("task or user not found")
     inMemoryDatabase.tasks.splice(index, 1)    
   }
 
