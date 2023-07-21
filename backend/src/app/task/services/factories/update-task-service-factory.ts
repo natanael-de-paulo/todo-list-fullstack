@@ -1,5 +1,5 @@
-import TasksRepository from "../../../../infra/database/repositories/tasks-repository";
 import UpdateTaskService from "../update-task-service";
+import TasksRepository from "../../../../infra/database/prisma/repositories/tasks-repository";
 
 class UpdateTaskServiceFactory {
   static updateTaskService() {

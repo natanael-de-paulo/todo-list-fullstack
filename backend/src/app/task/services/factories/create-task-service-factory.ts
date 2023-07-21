@@ -1,5 +1,5 @@
-import TasksRepository from "../../../../infra/database/repositories/tasks-repository";
 import CreateTaskService from "../create-task-service";
+import TasksRepository from "../../../../infra/database/prisma/repositories/tasks-repository";
 
 class CreateTaskServiceFactory {
   static createTaskService() {

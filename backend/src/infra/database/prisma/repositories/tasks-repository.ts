@@ -1,8 +1,8 @@
-import prisma from "../../../libs/prisma"
-import { ITasksRepository } from "../../../app/task/repository/tasks-repository";
-import { TaskResponseDTO } from "../../../app/task/dtos/task-dto-response";
-import { CreateTaskRequestDTO } from "../../../app/task/dtos/create-task-dto-request";
-import { DataTaskToUpdateDTO } from "../../../app/task/dtos/data-task-to-update-dto";
+import prisma from "../../../../libs/prisma"
+import { ITasksRepository } from "../../../../app/task/repository/tasks-repository";
+import { TaskResponseDTO } from "../../../../app/task/dtos/task-dto-response";
+import { CreateTaskRequestDTO } from "../../../../app/task/dtos/create-task-dto-request";
+import { DataTaskToUpdateDTO } from "../../../../app/task/dtos/data-task-to-update-dto";
 
 class TasksRepository implements ITasksRepository {
   async create(input: {taskData: CreateTaskRequestDTO, userId: string}): Promise<TaskResponseDTO> {
