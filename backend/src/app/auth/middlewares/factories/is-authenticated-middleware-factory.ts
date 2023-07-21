@@ -1,4 +1,4 @@
-import UsersRepository from "../../../../infra/database/repositories/users-repository";
+import UsersRepository from "../../../../infra/database/prisma/repositories/users-repository";
 import { httpMiddlewareAdapter } from "../../../../infra/http/middlewares/http-middleware-adapter";
 import { TokenJwt } from "../../../helpers/token-jwt";
 import AuthenticationMiddleware from "../is-autheticated";

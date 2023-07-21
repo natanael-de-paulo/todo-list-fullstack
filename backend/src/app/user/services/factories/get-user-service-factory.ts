@@ -1,5 +1,5 @@
+import UsersRepository from '../../../../infra/database/prisma/repositories/users-repository';
 import GetUserService from '../get-user-service';
-import UsersRepository from '../../../../infra/database/repositories/users-repository'
 
 class GetUserServiceFactory {
   static getUserService() {

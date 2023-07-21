@@ -1,5 +1,5 @@
+import UsersRepository from '../../../../infra/database/prisma/repositories/users-repository';
 import UpdateUserService from '../update-user-service';
-import UsersRepository from '../../../../infra/database/repositories/users-repository'
 
 class UpdateUserServiceFactory {
   static updateUserService() {

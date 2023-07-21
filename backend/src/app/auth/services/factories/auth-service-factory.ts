@@ -1,4 +1,4 @@
-import UsersRepository from "../../../../infra/database/repositories/users-repository";
+import UsersRepository from "../../../../infra/database/prisma/repositories/users-repository";
 import { Crypt } from "../../../helpers/crypt";
 import { TokenJwt } from "../../../helpers/token-jwt";
 import AuthService from "../auth-service";

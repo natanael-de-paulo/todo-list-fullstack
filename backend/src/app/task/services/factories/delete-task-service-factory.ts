@@ -1,5 +1,5 @@
-import TasksRepository from "../../../../infra/database/repositories/tasks-repository";
 import DeleteTaskService from "../delete-task-service";
+import TasksRepository from "../../../../infra/database/prisma/repositories/tasks-repository";
 
 class DeleteTaskServiceFactory {
   static deleteTaskService() {

@@ -1,10 +1,10 @@
-import { createUserResponseDTO } from "../../../app/user/dtos/create-user-dto-response";
-import { IUsersRepository } from "../../../app/user/repository/users-repository";
-import prisma from "../../../libs/prisma"
-import { createUserRequestDTO } from "../../../app/user/dtos/create-user-dto-request";
-import { dataUserToUpdateDTO } from "../../../app/user/dtos/data-user-dto-to-update";
-import { UserResponseDTO } from "../../../app/user/dtos/user-dto-response";
-import { UserDataOutputDTO } from "../../../app/auth/dtos/user-data-output-dto";
+import { createUserResponseDTO } from "../../../../app/user/dtos/create-user-dto-response";
+import { IUsersRepository } from "../../../../app/user/repository/users-repository";
+import prisma from "../../../../libs/prisma"
+import { createUserRequestDTO } from "../../../../app/user/dtos/create-user-dto-request";
+import { dataUserToUpdateDTO } from "../../../../app/user/dtos/data-user-dto-to-update";
+import { UserResponseDTO } from "../../../../app/user/dtos/user-dto-response";
+import { UserDataOutputDTO } from "../../../../app/auth/dtos/user-data-output-dto";
 
 class UsersRepository implements IUsersRepository {
 

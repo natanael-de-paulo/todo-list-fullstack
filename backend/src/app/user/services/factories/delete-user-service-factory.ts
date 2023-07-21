@@ -1,4 +1,4 @@
-import UsersRepository from '../../../../infra/database/repositories/users-repository'
+import UsersRepository from '../../../../infra/database/prisma/repositories/users-repository';
 import DeleteUserService from '../delete-users-service';
 
 class DeleteUserServiceFactory {
