@@ -42,28 +42,17 @@ class InMemoryTasksRepository implements ITasksRepository {
   }
 
   async update(input: DataTaskToUpdateDTO): Promise<void> {
-    const index = inMemoryDatabase.tasks.findIndex(task => task.taskId === input.taskId && task.userId === input.userId)
+    const index = this.findIndex(task => task.taskId === input.taskId && task.userId === input.userId)
+    if (index == -1) throw new Error("task or user not found")
     
     const data = inMemoryDatabase.tasks[index]
 
     inMemoryDatabase.tasks[index] = {
       ...data,
-      name: input.name,
-      status: input.status,
+      name: input.name ? input.name: data.name,
+      status: input.status? input.status: data.status,
       updatedAt: new Date()
     }
-
-    await prisma.task.update({
-      data: {
-        name: input.name,
-        status: {
-          set: input.status
-        }
-      },
-      where: {
-        taskId: input.taskId      
-      }
-    })
   }
 
   async delete(input: { userId: string, taskId: string }): Promise<void> {

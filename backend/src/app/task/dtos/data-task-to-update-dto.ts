@@ -1,3 +1,3 @@
 import { TaskModel } from '../model/task-model';
 
-export type DataTaskToUpdateDTO = Omit<TaskModel, 'createdAt' | 'updatedAt' >
+export type DataTaskToUpdateDTO = Partial<Pick<TaskModel, 'name' | 'status' >> & Pick<TaskModel, 'taskId' | 'userId'>
