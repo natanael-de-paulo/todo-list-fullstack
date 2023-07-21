@@ -45,9 +45,7 @@ class InMemoryTasksRepository implements ITasksRepository {
   async update(input: DataTaskToUpdateDTO): Promise<void> {
     const index = this.findIndex(task => task.taskId === input.taskId && task.userId === input.userId)
     if (index == -1) throw new Error("task or user not found")
-    
     const data = inMemoryDatabase.tasks[index]
-
     inMemoryDatabase.tasks[index] = {
       ...data,
       name: input.name ? input.name: data.name,
