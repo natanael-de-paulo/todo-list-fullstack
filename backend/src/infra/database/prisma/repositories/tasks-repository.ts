@@ -62,12 +62,10 @@ class TasksRepository implements ITasksRepository {
     await prisma.task.update({
       data: {
         name: input.name,
-        status: {
-          set: input.status
-        }
+        status: input.status
       },
       where: {
-        taskId: input.taskId      
+        taskId: input.taskId    
       }
     })
   }

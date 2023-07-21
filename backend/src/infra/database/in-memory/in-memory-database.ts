@@ -50,10 +50,18 @@ const inMemoryDatabase: IInMemoryDatabase = {
   ],
   tasks: [
     {
+      taskId: "68bc6be1-025c-6e64-ccf7-7a526359b4c5",
+      name: "Task 1",
+      userId: "79cb7be1-013b-4e84-bbf7-8a636559b5c6",
+      status: Status.PENDING,
+      createdAt: new Date("2023-04-10T04:14:11.715Z"),
+      updatedAt: new Date("2023-04-11T13:14:49.543Z")
+    },
+    {
       taskId: "acf3d30a-1244-4dd7-9335-1c6e5529879e",
       name: "Task user 2",
       userId: "861f79b2-f3a6-4ee6-9672-7746deda6904",
-      status: Status.DONE,
+      status: Status.PENDING,
       createdAt: new Date("2023-04-10T04:14:11.715Z"),
       updatedAt: new Date("2023-04-11T13:14:49.543Z")
     },
