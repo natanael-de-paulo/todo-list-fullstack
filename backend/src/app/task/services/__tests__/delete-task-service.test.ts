@@ -9,14 +9,11 @@ describe("delete task service", () => {
     expect(sut).toEqual(undefined)
   });
 
-  it("shold be able to return an error message if the task does not exist", async () => {
-    try {
-      const userId = "861f79b2-f3a6-4ee6-9672-7746deda6904"
-      const taskId = "65f01289-71e5-4faf-93d6-8e09ebdf0d46"
-      await DeleteTaskServiceFactory.execute({userId, taskId})
+  it("shold be able to return an error message if the task does not exist", async () => {   
+    const userId = "fdf9a70f-f3a6-4ee6-9672-7746deda6904"
+    const taskId = "fdf9a70f-427a-466c-8878-d0490e224f44"
 
-    } catch (error: any) {
-      expect(error.message).toEqual("task or user not found")      
-    }
+    const sut = DeleteTaskServiceFactory.execute({userId, taskId})
+    await expect(sut).rejects.toThrow("task or user not found")
   })
 })
