@@ -1,10 +1,10 @@
 import createTaskServiceFactory from "../../__mocks__/factories/create-task-service-factory";
 import { GeneratorUUID } from "../../../helpers/generator-uuid";
 
-describe("", () => {
-  it("", async () => {
+describe("create task service", () => {
+  it("should be able to return task created", async () => {
     const taskData = {
-      name: "teste jest"
+      name: "create task",
     }
     
     const generator = new GeneratorUUID()
@@ -14,6 +14,7 @@ describe("", () => {
       userId
     })
 
+    expect(sut.userId).toEqual(userId)
     expect(sut).toEqual({
       taskId: sut.taskId,
       name: taskData.name,
