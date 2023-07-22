@@ -23,21 +23,15 @@ describe("get task service", () => {
     const userId = "861f79b2-f3a6-4ee6-9672-7746deda6904"
     const taskId = "fdf9a70f-427a-466c-8878-d0490e224f44"
 
-    try {
-      await GetTaskServiceFactory.execute({ userId, taskId })
-    } catch (error: any) {
-      expect(error.message).toEqual("task or user not found") 
-    }
+    const sut = GetTaskServiceFactory.execute({ userId, taskId })
+    await expect(sut).rejects.toThrow("task or user not found")
   })
 
   it("shold be able to return an error message if the user does not exist", async () => {
     const userId = "319d5dbb-dc27-47cf-8b1c-c69b952f00fd"
     const taskId = "fdf9a70f-427a-466c-8878-d0490e224f44"
 
-    try {
-      await GetTaskServiceFactory.execute({ userId, taskId })
-    } catch (error: any) {
-      expect(error.message).toEqual("task or user not found") 
-    }
+    const sut = GetTaskServiceFactory.execute({ userId, taskId })
+    await expect(sut).rejects.toThrow("task or user not found")
   })
 })
