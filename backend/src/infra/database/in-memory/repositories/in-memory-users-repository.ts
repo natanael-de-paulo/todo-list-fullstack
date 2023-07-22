@@ -7,6 +7,7 @@ import { UserDataOutputDTO } from "../../../../app/auth/dtos/user-data-output-dt
 import inMemoryDatabase from "../in-memory-database";
 import { GeneratorUUID } from "../../../../app/helpers/generator-uuid";
 import { IGeneratorUUID } from "../../../../app/helpers/interfaces/igenerator-uuid";
+import { UserModel } from "../../../../app/user/model/user-model";
 
 class InMemoryUsersRepository implements IUsersRepository {
   private generatorUUID: IGeneratorUUID
@@ -37,22 +38,17 @@ class InMemoryUsersRepository implements IUsersRepository {
 
 
   async get(userId: string): Promise<UserResponseDTO> {
-    // const query = await prisma.user.findUnique({
-    //   where: {
-    //     userId: userId,
-    //   },
-    //   select: {
-    //     userId: true,
-    //     name: true,
-    //     email: true,
-    //     tasks: true,
-    //     createdAt: true,
-    //     updatedAt: true
-    //   }
-    // })
-
-    // return query as UserResponseDTO 
-    return {} as UserResponseDTO
+    const index = this.findIndex(user => user.userId === userId)
+    if (index == -1) throw new Error("user not found")
+    const output = inMemoryDatabase.users[index]
+    return {
+      userId: output.userId,
+      name: output.name,
+      email: output.email,
+      tasks: output.tasks,
+      createdAt: output.createdAt,
+      updatedAt: output.updatedAt
+    }
   }
 
   async create(input: createUserRequestDTO): Promise<createUserResponseDTO> {
@@ -91,6 +87,10 @@ class InMemoryUsersRepository implements IUsersRepository {
     //     userId: input.userId
     //   }
     // })
+  }
+
+  private findIndex(callback: (user: UserModel) => boolean): number {
+    return inMemoryDatabase.users.findIndex(callback)
   }
 }
 
