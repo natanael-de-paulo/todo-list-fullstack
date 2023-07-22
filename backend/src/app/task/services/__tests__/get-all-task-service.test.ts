@@ -1,8 +1,8 @@
 import getAllTaskServiceFactory from "../../__mocks__/factories/get-all-task-service-factory";
 import { Status } from "../../model/task-model";
 
-describe("", () => {
-  it("", async () => {
+describe("get all task service", () => {
+  it("should be able to return tasks", async () => {
 
     const userId = "861f79b2-f3a6-4ee6-9672-7746deda6904"
     const sut = await getAllTaskServiceFactory.execute(userId)
@@ -29,7 +29,7 @@ describe("", () => {
     )
   });
 
-  it("", async () => {
+  it("should be able to return empty array", async () => {
     const userId = "661f79b2-f3a6-4ee6-9672-7746deda6904"
     const sut = await getAllTaskServiceFactory.execute(userId)
 
